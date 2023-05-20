@@ -3,6 +3,7 @@ package com.slaythetrash;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.view.MotionEvent;
@@ -28,6 +29,7 @@ public class Game extends AppCompatActivity {
     private Activity activity;
 
     private int score = 0;
+    private int highScore = 0;
     private boolean isGameOver = false;
     private int[] plasticTrashImages = {
             R.drawable.plastic_cup,
@@ -119,6 +121,9 @@ public class Game extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_activity);
         int trashType = 0;
+        highScore = loadHighScore();
+        TextView recordTextView = findViewById(R.id.recordTextView);
+        recordTextView.setText("Рекорд: " + highScore);
         container = findViewById(R.id.layer);
         scoreTextView =  findViewById(R.id.scoreTextView);
         trashImageView = findViewById(R.id.trashImageView);
@@ -147,10 +152,16 @@ public class Game extends AppCompatActivity {
         // Отображение окна поражения
         Dialog gameOverDialog = new Dialog(Game.this);
         gameOverDialog.setContentView(R.layout.dialog_game_over);
-
-        TextView resultTextView = gameOverDialog.findViewById(R.id.resultTextView);
-        resultTextView.setText("Вы проиграли. Счёт: " + score);
-
+        if (score >= highScore) {
+            TextView resultTextView = gameOverDialog.findViewById(R.id.resultTextView);
+            resultTextView.setText("Вы побили свой рекорд!" +"\nСчёт: " + score + "\nПрошлый рекорд: " + highScore);
+            highScore = score;
+            saveHighScore(highScore);
+        }
+        else{
+            TextView resultTextView = gameOverDialog.findViewById(R.id.resultTextView);
+            resultTextView.setText("Вы проиграли!" +"\nСчёт: " + score + "\nРекорд: " + highScore);
+        }
         TextView menuButton = gameOverDialog.findViewById(R.id.menuButton);
         menuButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -176,6 +187,10 @@ public class Game extends AppCompatActivity {
     }
     private void updateScore() {
         scoreTextView.setText("Счёт: " + score);
+        if (score > highScore) {
+            TextView recordTextView = findViewById(R.id.recordTextView);
+            recordTextView.setText("Рекорд: " + score);
+        }
         generateTrash();
     }
 
@@ -184,4 +199,17 @@ public class Game extends AppCompatActivity {
         score++;
         updateScore();
     }
+    private void saveHighScore(int score) {
+        SharedPreferences sharedPreferences = getSharedPreferences("GamePreferences", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt("HighScore", score);
+        editor.apply();
+    }
+
+    // Метод для загрузки рекорда
+    private int loadHighScore() {
+        SharedPreferences sharedPreferences = getSharedPreferences("GamePreferences", MODE_PRIVATE);
+        return sharedPreferences.getInt("HighScore", 0);
+    }
+
 }
