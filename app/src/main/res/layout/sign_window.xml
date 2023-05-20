@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:cardElevation="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:id="@+id/layout"
+        android:orientation="vertical">
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/loginField"
+            android:hint="Почта"
+            android:inputType="text"
+            android:text=""
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
+            android:textSize="20sp"
+
+            app:met_floatingLabel="highlight"
+            app:met_baseColor="#0056d3"
+            app:met_primaryColor="#982360"
+            app:met_singleLineEllipsis="true"
+            />
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/passwordField"
+            android:hint="Пароль"
+            android:inputType="textPassword"
+            android:text=""
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
+            android:textSize="20sp"
+
+            app:met_floatingLabel="highlight"
+            app:met_baseColor="#0056d3"
+            app:met_primaryColor="#982360"
+            app:met_singleLineEllipsis="true"
+            />
+        <TextView
+            android:id="@+id/loginLinkTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="У вас ещё нет аккаунта?"
+            android:gravity="center"
+            android:padding="16dp" />
+        <Button
+            android:id="@+id/authorizationButton"
+            android:layout_width="237dp"
+            android:layout_height="66dp"
+            android:layout_gravity="center_horizontal"
+            android:backgroundTint="#000000"
+            android:text="Войти" />
+        <Button
+            android:id="@+id/skipButton"
+            android:layout_width="237dp"
+            android:layout_height="66dp"
+            android:layout_gravity="center_horizontal"
+            android:backgroundTint="#000000"
+            android:text="Играть без авторизации" />
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

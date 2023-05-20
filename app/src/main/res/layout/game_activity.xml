@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/layer"
+    android:padding="16dp"
+    android:background="@drawable/back"
+    tools:context=".MainActivity">
+
+
+    <ImageView
+        android:id="@+id/light"
+        android:layout_width="395dp"
+        android:layout_height="602dp"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/light"
+        tools:src="@drawable/light"
+        tools:srcCompat="@drawable/light" />
+
+    <ImageView
+        android:id="@+id/trashImageView"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerVertical="true"
+        android:layout_marginHorizontal="150sp"
+        android:layout_marginTop="457dp"
+        android:src="@drawable/plastic_cup" />
+
+    <ImageView
+        android:id="@+id/bin1ImageView"
+        android:layout_width="125dp"
+        android:layout_height="146dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:src="@drawable/plastic" />
+
+    <ImageView
+        android:id="@+id/bin2ImageView"
+        android:layout_width="125dp"
+        android:layout_height="146dp"
+        android:src="@drawable/paper"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"/>
+
+    <ImageView
+        android:id="@+id/bin3ImageView"
+        android:layout_width="125dp"
+        android:layout_height="146dp"
+        android:src="@drawable/glass"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"/>
+
+    <TextView
+        android:id="@+id/scoreTextView"
+        android:layout_width="wrap_content"
+        style="@style/BlackText"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="sans-serif-black"
+        android:padding="16dp"
+        android:text="Счёт: 0"
+        android:textColor="#000000"
+        android:textColorHint="#000000"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/recordTextView"
+        style="@style/BlackText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="45dp"
+        android:fontFamily="sans-serif-black"
+        android:padding="16dp"
+        android:text="Рекорд: 0"
+        android:textColor="#FB6B3F"
+        android:textColorHint="#FB6B3F"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+</RelativeLayout>
